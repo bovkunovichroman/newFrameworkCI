@@ -105,6 +105,8 @@ namespace GitHubAutomation.Pages
         [FindsBy(How = How.CssSelector, Using = "#alert_popup > div.popup__header")]
         public IWebElement alertAboutResave;
 
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div[1]/div/div[1]")]
+        public IWebElement alertAboutPassword;
 
         public MyTicketsPage ClickPassengerData()
         {

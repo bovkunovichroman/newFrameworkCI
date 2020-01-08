@@ -49,6 +49,7 @@ namespace GitHubAutomation.Tests
                 .ClickMyTicket();
                 MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
                 .ClickToResaveBuyerData();
+                //Assert.AreEqual("СООБЩЕНИЕ", myTicketsPage.alertAboutPassword.Text);
         }
         [Test]
         public void AddNewPassengerWithoutGender()
@@ -105,17 +106,6 @@ namespace GitHubAutomation.Tests
                  
         }
         [Test]
-        public void RegistrationWithoutNumber()
-        {
-                Logger.Log.Info("Start RegistrationWithoutNumber test.");
-                StartPage startPage = new StartPage(DriverInstance.GetInstance())
-                .OpenPage()
-                .ClickSignInAccountButton()
-                .OpenRegistrationPage();
-                RegistrationPage registrationPage = new RegistrationPage(DriverInstance.GetInstance())
-                .FillRegistrationPage(Service.Service.WithPropertiesAboutRegistration());            
-        }
-        [Test]
         public void FeedBackWithoutText()
         {
                 Logger.Log.Info("Start FeedBackWithoutText test.");
@@ -127,24 +117,68 @@ namespace GitHubAutomation.Tests
         [Test]
         public void ChangePassword()
         {
-            Logger.Log.Info("Start ChangePassword test.");
-            StartPage startPage = new StartPage(DriverInstance.GetInstance())
-            .OpenPage()
-            .ClickSignInAccountButton()
-            .FillInLoginAndPassword(Service.Service.WithUserPropertiesForSignIn())
-            .ClickMyTicket();
-            MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
-            .ChangePassword(Service.Service.WithUserPropertiesRepeatNewPassword());
+                Logger.Log.Info("Start ChangePassword test.");
+                StartPage startPage = new StartPage(DriverInstance.GetInstance())
+                .OpenPage()
+                .ClickSignInAccountButton()
+                .FillInLoginAndPassword(Service.Service.WithUserPropertiesForSignIn())
+                .ClickMyTicket();
+                MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
+                .ChangePassword(Service.Service.WithUserPropertiesRepeatNewPassword());
+                //Assert.AreEqual("СООБЩЕНИЕ", myTicketsPage.alertAboutPassword.Text);
         }
         [Test]
         public void SingInWithoutPassword()
         {
-            Logger.Log.Info("Start SingInWithoutPassword test.");
-            StartPage startPage = new StartPage(DriverInstance.GetInstance())
-            .OpenPage()
-            .ClickSignInAccountButton()
-            .FillInLoginAndPassword(Service.Service.WithUserPropertiesForSignInWithoutPassword());
-            Assert.AreEqual("Мой билет", startPage.textSignInButton.Text);
+                Logger.Log.Info("Start SingInWithoutPassword test.");
+                StartPage startPage = new StartPage(DriverInstance.GetInstance())
+                .OpenPage()
+                .ClickSignInAccountButton()
+                .FillInLoginAndPassword(Service.Service.WithUserPropertiesForSignInWithoutPassword());
+                Assert.AreEqual("Мой билет", startPage.textSignInButton.Text);
         }
+ 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//[Test]
+//public void RegistrationWithoutNumber()
+//{
+//    Logger.Log.Info("Start RegistrationWithoutNumber test.");
+//    StartPage startPage = new StartPage(DriverInstance.GetInstance())
+//    .OpenPage()
+//    .ClickSignInAccountButton()
+//    .OpenRegistrationPage();
+//    RegistrationPage registrationPage = new RegistrationPage(DriverInstance.GetInstance())
+//    .FillRegistrationPage(Service.Service.WithPropertiesAboutRegistration());
+//}
