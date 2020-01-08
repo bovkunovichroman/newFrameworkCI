@@ -18,6 +18,12 @@ namespace GitHubAutomation.Tests
     [TestFixture]
     public class Tests : TestListener
     {
+        private const string REQUIRED_LABEL_AFTER_AUTHORIZATION = "Мой билет";
+        private const string REQUIRED_LABEL_TO_FILL = "Это поле необходимо заполнить";
+        private const string BASE_MESSAGE = "СООБЩЕНИЕ";
+        private const string REQUIRED_TO_TAKE_GENDER = "Укажите пол пассажира";
+        private const string SELECTED_PLANE = "Боинг 707";
+
         [Test]
         public void SignInToAccount()
         {       
@@ -26,9 +32,8 @@ namespace GitHubAutomation.Tests
                 .OpenPage()
                 .ClickSignInAccountButton()
                 .FillInLoginAndPassword(Service.Service.WithUserPropertiesForSignIn());             
-                Assert.AreEqual("Мой билет", startPage.textSignInButton.Text);      
+                Assert.AreEqual(REQUIRED_LABEL_AFTER_AUTHORIZATION, startPage.textSignInButton.Text);      
         }
-
         [Test]
         public void InputInvalidInputSityToWhenViewingSearchResultWithoutDateStatus()
         {
@@ -36,7 +41,7 @@ namespace GitHubAutomation.Tests
                 StartPage startPage = new StartPage(DriverInstance.GetInstance())
                .OpenPage()
                .GoToSearch(Service.Service.WithSearchResultWithoutDateProperties());
-                Assert.AreEqual("Это поле необходимо заполнить", startPage.errorTextToName.Text);
+                Assert.AreEqual(REQUIRED_LABEL_TO_FILL, startPage.errorTextToName.Text);
         }
         [Test]
         public void ResaveValuesInBuyerDataWithoutChanges()
@@ -49,7 +54,7 @@ namespace GitHubAutomation.Tests
                 .ClickMyTicket();
                 MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
                 .ClickToResaveBuyerData();
-                //Assert.AreEqual("СООБЩЕНИЕ", myTicketsPage.alertAboutPassword.Text);
+                //Assert.AreEqual(BASE_MESSAGE, myTicketsPage.alertAboutPassword.Text);
         }
         [Test]
         public void AddNewPassengerWithoutGender()
@@ -63,7 +68,7 @@ namespace GitHubAutomation.Tests
                 MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
                 .ClickPassengerData()
                 .FillAllValuesInLabels(Service.Service.WithPassengerDataProperties());
-                Assert.AreEqual("Укажите пол пассажира", myTicketsPage.withoutGenderMessage.Text);
+                Assert.AreEqual(REQUIRED_TO_TAKE_GENDER, myTicketsPage.withoutGenderMessage.Text);
         }
         [Test]
         public void ChangePasswordWithoutConfirm()
@@ -77,7 +82,7 @@ namespace GitHubAutomation.Tests
                 Thread.Sleep(100);
                 MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
                 .ChangePassword(Service.Service.WithUserPropertiesWithoutRepeat());
-                Assert.AreEqual("Это поле необходимо заполнить", myTicketsPage.confirmPasswordSpace.Text);
+                Assert.AreEqual(REQUIRED_LABEL_TO_FILL, myTicketsPage.confirmPasswordSpace.Text);
 
         }
         [Test]
@@ -92,7 +97,7 @@ namespace GitHubAutomation.Tests
                 MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
                 .ClickPassengerData()
                 .FillAllValuesInLabels(Service.Service.WithPassengerDataPropertiesWithoutName());
-                Assert.AreEqual("Это поле необходимо заполнить", myTicketsPage.withoutName.Text);
+                Assert.AreEqual(REQUIRED_LABEL_TO_FILL, myTicketsPage.withoutName.Text);
 
         }
         [Test]
@@ -102,7 +107,7 @@ namespace GitHubAutomation.Tests
                 AirPlanesPage airPlanesPage = new AirPlanesPage(DriverInstance.GetInstance())
                 .OpenAirPlanesPage()
                 .ClickOnBoeing707();
-                Assert.AreEqual("Боинг 707", airPlanesPage.namePlane.Text);
+                Assert.AreEqual(SELECTED_PLANE, airPlanesPage.namePlane.Text);
                  
         }
         [Test]
@@ -112,7 +117,7 @@ namespace GitHubAutomation.Tests
                 StartPage startPage = new StartPage(DriverInstance.GetInstance())
                 .OpenPage()
                 .CheckFeedBack();
-                Assert.AreEqual("Это поле необходимо заполнить", startPage.errorTextBeforeSubmitButton.Text);
+                Assert.AreEqual(REQUIRED_LABEL_TO_FILL, startPage.errorTextBeforeSubmitButton.Text);
         }
         [Test]
         public void ChangePassword()
@@ -125,7 +130,7 @@ namespace GitHubAutomation.Tests
                 .ClickMyTicket();
                 MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
                 .ChangePassword(Service.Service.WithUserPropertiesRepeatNewPassword());
-                //Assert.AreEqual("СООБЩЕНИЕ", myTicketsPage.alertAboutPassword.Text);
+                 //Assert.AreEqual(BASE_MESSAGE, myTicketsPage.alertAboutPassword.Text);
         }
         [Test]
         public void SingInWithoutPassword()
@@ -135,7 +140,7 @@ namespace GitHubAutomation.Tests
                 .OpenPage()
                 .ClickSignInAccountButton()
                 .FillInLoginAndPassword(Service.Service.WithUserPropertiesForSignInWithoutPassword());
-                Assert.AreEqual("Мой билет", startPage.textSignInButton.Text);
+                Assert.AreEqual(REQUIRED_LABEL_AFTER_AUTHORIZATION, startPage.textSignInButton.Text);
         }
  
     }
