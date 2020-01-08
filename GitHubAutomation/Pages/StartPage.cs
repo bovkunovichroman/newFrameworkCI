@@ -54,22 +54,22 @@ namespace GitHubAutomation.Pages
         private IWebElement myTicketSpace;
 
         [FindsBy(How = How.CssSelector, Using = "#base_direction > div > div.fields_block > div.form-item.form-item--date.input-block.search_field.date_field > div > samp")]
-        public IWebElement errorMessage;
+        private IWebElement errorMessage;
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/header/div/div/div/div[3]/a[1]")]
-        public IWebElement textSignInButton;
+        private IWebElement textSignInButton;
 
         [FindsBy(How = How.ClassName, Using = "tooltip-btn")]
-        public IWebElement feedBackClicker;
+        private IWebElement feedBackClicker;
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/footer/div[2]/div[2]/div[1]/div/div[1]/div[3]/div/div/div[2]/form/div[4]/input")]
         private IWebElement submitButton;
     
         [FindsBy(How = How.CssSelector, Using = "#footer > div.footer_contacts > div.footer-contacts-content > div.contacts_wrapper.show > div > div.row.first_sector > div.col-3.col-l-3.col-m-6.col-s-12.info-block_chat > div > div > div.tooltip__content > form > div:nth-child(2) > samp")]
-        public IWebElement errorTextBeforeSubmitButton;
+        private IWebElement errorTextBeforeSubmitButton;
 
         [FindsBy(How = How.CssSelector, Using = "#base_direction > div > div.fields_block > div.form-item.form-item--date.input-block.search_field.date_field > div > samp")]
-        public IWebElement errorTextToName;
+        private IWebElement errorTextToName;
 
         [FindsBy(How = How.CssSelector, Using = "#login_popup > div.form_row > a")]
         private IWebElement registrationLabel;
@@ -78,6 +78,26 @@ namespace GitHubAutomation.Pages
         {
             driver.Navigate().GoToUrl(BASE_URL);
             return this;
+        }
+
+        public string GetTextSignInButton()
+        {
+            return textSignInButton.Text;
+        }
+
+        public string GetErrorMessage()
+        {
+            return errorMessage.Text;
+        }
+
+        public string GetErrorMessageTextToName()
+        {
+            return errorTextToName.Text;
+        }
+
+        public string GetErrorMessageTextBeforeSubmitButton()
+        {
+            return errorTextBeforeSubmitButton.Text;
         }
 
         public StartPage OpenRegistrationPage()

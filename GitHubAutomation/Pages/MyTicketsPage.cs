@@ -94,20 +94,43 @@ namespace GitHubAutomation.Pages
         private IWebElement passwordConfirmUnput;
 
         [FindsBy(How = How.CssSelector, Using = "#content > div > div > div.col-9.col-l-12 > div.cabinet-content.change-password-page > div > form > div:nth-child(2) > samp")]
-        public IWebElement confirmPasswordSpace;
+        private IWebElement confirmPasswordSpace;
 
         [FindsBy(How = How.CssSelector, Using = "#content > div > div > div.col-9.col-l-12 > div.cabinet-content > div:nth-child(6) > form > div > div.db-col.db-col__gender > ul > li:nth-child(1) > div > samp")]
-        public IWebElement withoutGenderMessage;
+        private IWebElement withoutGenderMessage;
 
         [FindsBy(How = How.CssSelector, Using = "#content > div > div > div.col-9.col-l-12 > div.cabinet-content > div:nth-child(6) > form > div > div.db-col.js-first-name > samp")]
-        public IWebElement withoutName;
+        private IWebElement withoutName;
 
         [FindsBy(How = How.CssSelector, Using = "#alert_popup > div.popup__header")]
-        public IWebElement alertAboutResave;
+        private IWebElement alertAboutResave;
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div[1]/div/div[1]")]
-        public IWebElement alertAboutPassword;
+        private IWebElement alertAboutPassword;
 
+        public string GetConfirmPasswordSpace()
+        {
+            return confirmPasswordSpace.Text;
+        }
+
+        public string GetwithoutGenderMessage()
+        {
+            return withoutGenderMessage.Text;
+        }
+
+        public string GetErrorMessageWithoutName()
+        {
+            return withoutName.Text;
+        }
+
+        public string GetMessageAlertAboutPassword()
+        {
+            return alertAboutPassword.Text;
+        }
+        public string GetErrorMessageAlertAboutResave()
+        {
+            return alertAboutResave.Text;
+        }
         public MyTicketsPage ClickPassengerData()
         {
             passengerData.Click();

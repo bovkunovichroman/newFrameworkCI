@@ -33,7 +33,7 @@ namespace GitHubAutomation.Pages
         private IWebElement infoAboutBoeing707;
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[1]/div/div[2]/div/h1")]
-        public IWebElement namePlane;
+        private IWebElement namePlane;
 
         public AirPlanesPage ClickOnBoeing707()
         {
@@ -44,6 +44,11 @@ namespace GitHubAutomation.Pages
         {
             driver.Navigate().GoToUrl(BASE_URL);
             return this;
+        }
+
+        public string GetNamePlane()
+        {
+            return namePlane.Text;
         }
 
 
