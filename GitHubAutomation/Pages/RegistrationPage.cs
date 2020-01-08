@@ -53,8 +53,5 @@ namespace GitHubAutomation.Pages
             registrationButton.Click();
             return this;
         }
-
-
-
     }
 }
