@@ -84,5 +84,13 @@ namespace GitHubAutomation.Service
                 TestDataReader.GetData("Password")
                 );
         }
+        public static SignIn WithUserPropertiesForSignInWithoutPassword()
+        {
+            return new SignIn
+                (
+                TestDataReader.GetData("MemberId"),
+                TestDataReader.GetData("NewPasswordNull")
+                );
+        }
     }
 }

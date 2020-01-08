@@ -18,7 +18,9 @@ namespace GitHubAutomation.Pages
     public class RegistrationPage
     {
         private IWebDriver driver;
-        
+
+        private const string BASE_URL = "https://aviakassa.by/airplanes";
+
         public RegistrationPage(IWebDriver webDriver)
         {
             this.driver = webDriver;

@@ -135,8 +135,16 @@ namespace GitHubAutomation.Tests
             .ClickMyTicket();
             MyTicketsPage myTicketsPage = new MyTicketsPage(DriverInstance.GetInstance())
             .ChangePassword(Service.Service.WithUserPropertiesRepeatNewPassword());
-
         }
-
+        [Test]
+        public void SingInWithoutPassword()
+        {
+            Logger.Log.Info("Start SingInWithoutPassword test.");
+            StartPage startPage = new StartPage(DriverInstance.GetInstance())
+            .OpenPage()
+            .ClickSignInAccountButton()
+            .FillInLoginAndPassword(Service.Service.WithUserPropertiesForSignInWithoutPassword());
+            Assert.AreEqual("Мой билет", startPage.textSignInButton.Text);
+        }
     }
 }
